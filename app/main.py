@@ -1,8 +1,4 @@
-from fastapi import FastAPI
-
-app = FastAPI()
+from core.bootstrap.app import create_app
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+app = create_app()
