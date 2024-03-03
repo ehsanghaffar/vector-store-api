@@ -1,7 +1,8 @@
 from functools import lru_cache
 from typing import List
 
-from pydantic import BaseSettings, validator
+from pydantic import validator
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -35,25 +36,6 @@ class Settings(BaseSettings):
         "exception: {exception}"
     )
 
-    DB_ECHO_LOG: bool = True
-    DB_CONNECTION: str
-    DB_HOST: str
-    DB_PORT: str
-    DB_DATABASE: str
-    DB_USERNAME: str
-    DB_PASSWORD: str
-    DB_URL: str = ''
-
-    @validator("DB_URL", always=True)
-    def prepare_db_url(cls, value, values):
-        return '{0}+aiomysql://{1}:{2}@{3}:{4}/{5}'.format(
-            values.get('DB_CONNECTION'),
-            values.get('DB_USERNAME'),
-            values.get('DB_PASSWORD'),
-            values.get('DB_HOST'),
-            values.get('DB_PORT'),
-            values.get('DB_DATABASE')
-        )
 
     class Config:
         env_file = ".env"

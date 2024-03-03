@@ -4,8 +4,8 @@ import requests
 from starlette.requests import Request
 from starlette.routing import Match
 
-from core.config import get_settings
-from core.schemas.base import BaseResponse
+from app.core.config import get_settings
+from app.core.schemas.base import BaseResponse
 
 
 def get_matching_route_path(request: Request) -> str:
