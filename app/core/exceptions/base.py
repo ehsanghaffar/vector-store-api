@@ -1,6 +1,6 @@
 from http import HTTPStatus
 
-from core.enums.status_type import StatusType
+from app.core.enums.status_type import StatusType
 
 
 class CustomException(Exception):

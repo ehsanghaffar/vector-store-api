@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from core.config import Settings, get_settings
+from app.core.config import Settings, get_settings
 
 from .middlewares import init_middlewares
 from .routers import init_routers
