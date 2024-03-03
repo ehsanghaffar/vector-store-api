@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from core.config import Settings, get_settings
-from core.middlewares.logging import LoggingMiddleware
-from core.middlewares.request_id import RequestIdMiddleware
+from app.core.config import Settings, get_settings
+from app.core.middlewares.logging import LoggingMiddleware
+from app.core.middlewares.request_id import RequestIdMiddleware
 
 
 def init_middlewares(app_: FastAPI) -> None:

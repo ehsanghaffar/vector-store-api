@@ -4,7 +4,7 @@ from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
-from core.exceptions.base import CustomException, BadRequestException, UnprocessableEntity
+from app.core.exceptions.base import CustomException, BadRequestException, UnprocessableEntity
 
 
 def init_handlers(app_: FastAPI) -> None:
