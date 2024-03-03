@@ -1,3 +1,5 @@
+import os
+import shutil
 from langchain_community.document_loaders import (
     CSVLoader,
     EverNoteLoader,
@@ -13,8 +15,14 @@ from langchain_community.document_loaders import (
 )
 from langchain.schema import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from app.api.v1.embed.schemas.requests import EmbedOnlineFileRequest
+from app.core.config import get_settings
 from app.core.utils import download_file
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores.chroma import Chroma
 
+CHROMA_PATH = "chroma"
+DATA_PATH = "data/books"
 
 # Map file extensions to document loaders and their arguments
 LOADER_MAPPING = {
@@ -63,3 +71,28 @@ def split_text(documents: list[Document]):
     print(document.metadata)
 
     return chunks
+
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+
+def save_to_chroma(chunks: list[Document], chroma_path: str, collection: str):
+    # Clear out the database first.
+    if os.path.exists(chroma_path):
+        shutil.rmtree(chroma_path)
+
+    # Create a new DB from the documents.
+    db = Chroma.from_documents(
+        documents=chunks, embedding=embeddings, persist_directory=chroma_path, collection_name=collection
+    )
+    db.persist()
+    print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")
+
+
+class EmbeddingService:
+    def __init__(self):
+        self.settings = get_settings()
+
+    async def embedRemote(self, embed_request: EmbedOnlineFileRequest):
+        loaded_file = load_documents_from_url(file_url=embed_request.file_url)
+        documents = split_text(loaded_file)
+        save_to_chroma(chunks=documents, chroma_path=self.settings.CHROMA_PATH, collection=embed_request.collection_name)
