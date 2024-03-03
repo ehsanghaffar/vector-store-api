@@ -9,7 +9,7 @@ from app.core.middlewares.request_id import RequestIdMiddleware
 def init_middlewares(app_: FastAPI) -> None:
     settings: Settings = get_settings()
 
-    app_.add_middleware(LoggingMiddleware)
+    # app_.add_middleware(LoggingMiddleware)
     app_.add_middleware(RequestIdMiddleware)
 
     # CORSMiddleware

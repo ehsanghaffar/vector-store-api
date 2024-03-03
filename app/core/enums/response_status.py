@@ -7,7 +7,8 @@ class ResponseStatus(Enum):
         self.status_code = status_code
         self.message = message
 
-    USER_REGISTERED = (HTTPStatus.CREATED, 'User registered successfully')
-    USER_LOGGED_IN = (HTTPStatus.OK, 'User logged in successfully')
-    USER_NOT_FOUND = (HTTPStatus.NOT_FOUND, 'User not found')
-    DUPLICATE_EMAIL = (HTTPStatus.CONFLICT, "User already exists")
+    EMBED_SUCCESSFULLY = (HTTPStatus.OK, 'Embed successfully')
+    EMBED_FAILED = (HTTPStatus.BAD_REQUEST, 'Embed failed')
+    EMBED_NOT_FOUND = (HTTPStatus.NOT_FOUND, 'Embed not found')
+    EMBED_ALREADY_EXISTS = (HTTPStatus.CONFLICT, 'Embed already exists')
+    EMBED_DELETED = (HTTPStatus.OK, 'Embed deleted')
