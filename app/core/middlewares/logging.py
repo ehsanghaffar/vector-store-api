@@ -8,10 +8,10 @@ from starlette.requests import Request
 from starlette.responses import Response
 from starlette.types import ASGIApp
 
-from core.logging.logger import logger
-from core.logging.schemas import ExtraLogData
+from app.core.logging.logger import logger
+from app.core.logging.schemas import ExtraLogData
 
-from core.utils import get_matching_route_path, get_path_params
+from app.core.utils import get_matching_route_path, get_path_params
 
 
 class LoggingMiddleware(BaseHTTPMiddleware):
