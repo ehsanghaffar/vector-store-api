@@ -18,6 +18,9 @@ class Settings(BaseSettings):
 
     BACKEND_CORS_ORIGINS: List[str] = ['*']
 
+    CHROMA_PATH: str = "chroma"
+    DATA_PATH: str = "data"
+
     LOG_LEVEL: str = "DEBUG"
     LOG_FORMAT: str = (
         "time: {time:YYYY-MM-DD HH:mm:ss Z} | "
