@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: vector_store_api
+    build: .
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    environment:
+      PORT: 8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./chroma:/app/chroma
+      - ./:/app
+    restart: always
+
+
+volumes:
+  chroma:
