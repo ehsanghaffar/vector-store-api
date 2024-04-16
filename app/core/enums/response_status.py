@@ -12,3 +12,9 @@ class ResponseStatus(Enum):
     EMBED_NOT_FOUND = (HTTPStatus.NOT_FOUND, 'Embed not found')
     EMBED_ALREADY_EXISTS = (HTTPStatus.CONFLICT, 'Embed already exists')
     EMBED_DELETED = (HTTPStatus.OK, 'Embed deleted')
+
+
+    COLLECTIONS_SUCCESSFULLY = (HTTPStatus.OK, 'Get Collections successfully')
+    COLLECTIONS_NOT_FOUND = (HTTPStatus.NOT_FOUND, 'Collection not found')
+    COLLECTIONS_ALREADY_EXISTS = (HTTPStatus.CONFLICT, 'Collection already exists')
+    COLLECTIONS_DELETED = (HTTPStatus.OK, 'Collection deleted')
