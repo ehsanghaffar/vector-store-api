@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app:
+    container_name: vector_store_api
+    env_file:
+      - .env
+    build:
+      context: ./../app
+      dockerfile: ./../docker/conf/python/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./../app:/app:rw
+    command: sh -c "cd /app && poetry config virtualenvs.in-project true && poetry install
+            && chmod +x ./wait-for-it.sh
+            && ./wait-for-it.sh -t 0 mysql:3306
+            && /app/.venv/bin/uvicorn main:app --reload --host 0.0.0.0 --port 8080"
+    networks:
+      - fastapi_app_network
+
+
+networks:
+  fastapi_app_network:
+    driver: bridge
