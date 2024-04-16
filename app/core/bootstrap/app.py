@@ -14,8 +14,8 @@ def create_app() -> FastAPI:
         title=settings.PROJECT_TITLE,
         description=settings.PROJECT_DESCRIPTION,
         version=settings.PROJECT_VERSION,
-        docs_url=None if settings.ENV == "prod" else "/docs",
-        redoc_url=None if settings.ENV == "prod" else "/redoc",
+        docs_url=None if settings.ENV == "prod" else f"{settings.API_V1_PREFIX}/docs",
+        redoc_url=None if settings.ENV == "prod" else f"{settings.API_V1_PREFIX}/redoc",
     )
 
     # Initializing required dependencies
