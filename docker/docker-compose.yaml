@@ -7,7 +7,7 @@ services:
       - .env
     build:
       context: ./../app
-      dockerfile: ./../docker/conf/python/Dockerfile
+      dockerfile: ./../docker/conf/Dockerfile
     ports:
       - "8080:8080"
     volumes:
