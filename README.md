@@ -14,35 +14,35 @@ A Fastapi, Qdrant, Langchain, vector store starter project with some cool featur
 
 ### 2. Designing the API 🎨
 
-[ ] **Task 1:** Define the endpoints we'll need. Consider the following:
+- [ ] **Task 1:** Define the endpoints we'll need. Consider the following:
 
-- [x]  An endpoint for uploading files or text to be vectorized.
+  - [x] An endpoint for uploading files or text to be vectorized.
 
-- [ ] An endpoint to search through the stored vectors using similarity search.
+  - [ ] An endpoint to search through the stored vectors using similarity search.
 
-- [ ] An endpoint to list or retrieve specific vectors or their metadata.
+  - [ ] An endpoint to list or retrieve specific vectors or their metadata.
 
-[ ] **Task 2:** Plan out the request and response models for endpoints using Pydantic models.
+- [ ] **Task 2:** Plan out the request and response models for endpoints using Pydantic models.
 
 ### 3. Implementing Endpoints 🛠️👨‍💻
 
-[x] **Task 1:** Implement the file/text upload endpoint.
+- [x] **Task 1:** Implement the file/text upload endpoint.
 
-- [x] Parse the input data.
+  - [x] Parse the input data.
   
-- [x] Embed the input into a vector form (you might need an external library or service for embedding, such as TensorFlow for images or Hugging Face's transformers for text).
+  - [x] Embed the input into a vector form (you might need an external library or service for embedding, such as TensorFlow for images or Hugging Face's transformers for text).
 
-- [x] Store the vector in Chroma with relevant metadata.
+  - [x] Store the vector in Chroma with relevant metadata.
 
-[ ] **Task 2:** Implement the search endpoint.
+- [ ] **Task 2:** Implement the search endpoint.
 
-- [ ] Accept a query as input and convert it into a vector.
+  - [ ] Accept a query as input and convert it into a vector.
 
-- [ ] Perform a similarity search in Chroma.
+  - [ ] Perform a similarity search in Chroma.
 
-- [ ] Return the closest matches.
+  - [ ] Return the closest matches.
 
-[ ] **Task 3:** Implement auxiliary endpoints as needed (for listing, updating, or deleting vectors).
+- [ ] **Task 3:** Implement auxiliary endpoints as needed (for listing, updating, or deleting vectors).
 
 ### 4. Vector Database Integration 🗂️↔️🚀
 
