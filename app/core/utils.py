@@ -1,4 +1,5 @@
 import os
+from fastapi import File
 from fastapi.responses import JSONResponse
 import requests
 from starlette.requests import Request
@@ -67,3 +68,13 @@ def download_file(url: str, save_path: str, session=None):
     except requests.exceptions.RequestException as e:
         print(f"Error downloading {url}: {e}")
         return None
+
+
+def upload_file(file: File, save_path: str):
+    filename = file.filename
+    save_path = os.path.join(save_path, filename)
+
+    with open(save_path, 'wb') as f:
+        f.write(file.file.read())
+
+    return save_path
